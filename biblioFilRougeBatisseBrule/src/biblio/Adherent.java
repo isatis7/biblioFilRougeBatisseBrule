@@ -1,6 +1,9 @@
 package biblio;
 
 import java.text.ParseException;
+import java.util.GregorianCalendar;
+
+import enumeration.EnumStatusExemplaire;
 
 //Source file: K:\\fil rouge bibliotheque\\Vue logique\\code java genere a partir de la recette partie 3\\Adherent.java
 
@@ -17,16 +20,19 @@ public class Adherent extends Utilisateur
    private String telephone;
    private static Integer nbMaxPrets = 3;
    private static Integer dureeMaxPrets = 15;
-   private boolean conditionsPretAcceptees;
+   private boolean conditionsPretAcceptees = true;
    private int nbRetard;
    private EnumStatusExemplaire statusExemplaire;
    /**
     * @throws ParseException 
- * @roseuid 58B5775C0391
+    * @roseuid 58B5775C0391
     */
-   public Adherent() throws ParseException 
+   public Adherent(String nom,String prenom,GregorianCalendar dateNaissance,String sexe, int idUtilisateur, String pwd, String pseudonyme,String telephone)  
    {
-     super();
+     super(nom,prenom,dateNaissance,sexe,idUtilisateur,pwd,pseudonyme);
+     this.telephone=telephone;
+//     this.nbMaxPrets=nbMaxPrets;
+//     this.dureeMaxPrets=dureeMaxPrets;
    }
    
    /**
@@ -50,7 +56,7 @@ public class Adherent extends Utilisateur
 	   ep.setEnumStatusExemplaire(EnumStatusExemplaire.PRETE); 
 	   setNbEmpruntsEnCours(getNbEmpruntsEnCours() + 1);
   	   }else{
-  		   throw new IllegalArgumentException("L'adherent ne peut pas emprunter de livre");
+//  		   throw new IllegalArgumentException("L'adherent ne peut pas emprunter de livre");
   	   }
 }
    
@@ -70,5 +76,14 @@ public class Adherent extends Utilisateur
    public boolean getConditionsPretAcceptees(){
 	   return conditionsPretAcceptees;
    }
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
+@Override
+public String toString() {
+	return super.toString()+"Adherent [telephone=" + telephone + ", conditionsPretAcceptees=" + conditionsPretAcceptees + ", nbRetard="
+			+ nbRetard + ", statusExemplaire=" + statusExemplaire + ", empruntEnCours=" + empruntEnCours + "]\n\n";
+}
    
 }

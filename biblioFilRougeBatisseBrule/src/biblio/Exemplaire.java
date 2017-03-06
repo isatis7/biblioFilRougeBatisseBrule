@@ -4,7 +4,10 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.GregorianCalendar;
 //import java.util.GregorianCalendar;
+
+import enumeration.EnumStatusExemplaire;
 
 /**
  * @author Philippe BATISSE
@@ -15,19 +18,24 @@ public class Exemplaire {
 	 * Liste des attributs
 	 */
 	private int idExemplaire;
-	private Date dateAchat;
+	private GregorianCalendar dateAchat;
 	private EnumStatusExemplaire status = EnumStatusExemplaire.DISPONIBLE;
 	private String isbn;
+	private EmpruntEnCours util;
+
 	@SuppressWarnings("unused")
-	private static class empruntEnCourt{
+	private static class empruntEnCourt {
 		private Date setDateEmprunt;
 	}
+
 	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
-	public Exemplaire(int idExemplaire, String laDateAchat, EnumStatusExemplaire status, String isbn) throws ParseException {
+	public Exemplaire(int idExemplaire, GregorianCalendar laDateAchat, EnumStatusExemplaire status, String isbn) { // throws
+																													// ParseException
+																													// {
 		super();
 		this.idExemplaire = idExemplaire;
-		this.dateAchat = new SimpleDateFormat ("dd/MM/yyyy").parse(laDateAchat);
+		this.dateAchat = laDateAchat;// df.parse(//
 		this.status = status;
 		this.isbn = isbn;
 	}
@@ -60,19 +68,20 @@ public class Exemplaire {
 	/**
 	 * @return the dateAchat
 	 */
-	public Date getDateAchat() {
-//		Date dateAchat = GregorianCalendar.getInstance().getTime();
-//		String laDateAchat = df.format(laDateAchat);
+	public GregorianCalendar getDateAchat() {
+		// Date dateAchat = GregorianCalendar.getInstance().getTime();
+		// String laDateAchat = df.format(laDateAchat);
 		return dateAchat;
 	}
 
 	/**
 	 * @param dateAchat
 	 *            the dateAchat to set
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
-	public void setDateAchat(String laDateAchat) throws ParseException {
-		this.dateAchat = new SimpleDateFormat ("dd/MM/yyyy").parse(laDateAchat);
+	public void setDateAchat(GregorianCalendar laDateAchat) throws ParseException {
+		this.dateAchat = laDateAchat;// new SimpleDateFormat
+										// ("dd/MM/yyyy").parse(
 	}
 
 	/**
@@ -98,13 +107,20 @@ public class Exemplaire {
 		this.status = status;
 	}
 
-	/* (non-Javadoc)
+	public void setEmpruntEnCours(EmpruntEnCours le) {
+		this.util = le;
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Exemplaire [idExemplaire=" + idExemplaire + ", dateAchat=" + dateAchat + ", status=" + status
-				+ ", isbn=" + isbn + "]";
+		return "Exemplaire [idExemplaire=" + idExemplaire + ", dateAchat=" + df.format(dateAchat.getTimeInMillis()) + ", status="
+				+ status + ", isbn=" + isbn + "]\n\n";
 	}
-	
+
 }

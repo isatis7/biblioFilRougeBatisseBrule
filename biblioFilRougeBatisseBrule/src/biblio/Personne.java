@@ -1,8 +1,10 @@
 package biblio;
 
-import java.text.ParseException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+//import java.text.ParseException;
+//import java.text.SimpleDateFormat;
+//import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -15,17 +17,19 @@ public class Personne {
 	 */
 	private String nom;
 	private String prenom;
-	private Date dateNaissance;
+	private GregorianCalendar dateNaissance;
 	private String sexe;
+	
+	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
 	/**
 	 * Constructeur complet ; nom, prenom, date de naissance, sexe.
 	 */
-	public Personne(String nom, String prenom, String uneDateNaissance, String sexe) throws ParseException {
+	public Personne(String nom, String prenom, GregorianCalendar uneDateNaissance, String sexe){
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.dateNaissance = new SimpleDateFormat ("dd/MM/yyyy").parse(uneDateNaissance);
+		this.dateNaissance = uneDateNaissance;
 		this.sexe = sexe;
 	}
 
@@ -62,7 +66,7 @@ public class Personne {
 	/**
 	 * @return the dateNaissance
 	 */
-	public Date getDateNaissance() {
+	public GregorianCalendar getDateNaissance() {
 		return dateNaissance;
 	}
 
@@ -70,7 +74,7 @@ public class Personne {
 	 * @param dateNaissance
 	 *            the dateNaissance to set
 	 */
-	public void setDateNaissance(Date dateNaissance) {
+	public void setDateNaissance(GregorianCalendar dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 
@@ -94,8 +98,8 @@ public class Personne {
 	 */
 	@Override
 	public String toString() {
-		return "Personne [nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", sexe=" + sexe
-				+ "]";
+		return "Personne [nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" +df.format(dateNaissance.getTimeInMillis()) +", sexe=" + sexe
+				+ "]\n";
 	}
 	
 

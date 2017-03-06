@@ -1,4 +1,4 @@
-package biblio;
+package enumeration;
 
 //Source file: K:\\fil rouge bibliotheque\\Vue logique\\code java genere a partir de la recette partie 3\\EnumCategorieEmploye.java
 

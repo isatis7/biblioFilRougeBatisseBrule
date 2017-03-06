@@ -1,4 +1,4 @@
-package biblio;
+package enumeration;
 
 /**
  * @author Philippe BATISSE
