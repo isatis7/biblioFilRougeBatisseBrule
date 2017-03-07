@@ -43,11 +43,11 @@ public class TestClass {
 		Utilisateur ad2=lambda.findByKey(3);
 		System.out.println(ad2);
 		EmpruntEnCours le = new EmpruntEnCours("02/03/2017",un,ad1);
-		EmpruntEnCours li = new EmpruntEnCours ("01/01/2017",deux,ad1);
+		//EmpruntEnCours li = new EmpruntEnCours ("01/01/2017",deux,ad1);
 		//System.out.println(new SimpleDateFormat("dd/MM/yyyy").format(le.getDateEmprunt()));
 		//System.out.println("Adhérent : "+le+"Employé : "+li);
-		ad1.addEmpruntEnCours(le);
-		ad1.addEmpruntEnCours(li);
+//		ad1.addEmpruntEnCours(le);
+//		ad1.addEmpruntEnCours(li);
 //		un.setEmpruntEnCours(le);
 		EmpruntEnCours la=new EmpruntEnCours("01/03/2017",deux,ad2);
 		//ad2.addEmpruntEnCours(la);
